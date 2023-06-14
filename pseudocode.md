@@ -4,7 +4,7 @@ START
 
 INIT - variables, functions, (declared in functional pseudo) steps, assumptions, known-knowns (requirements), known-unknowns
 
-    ** Steps: **
+    **Steps:**
 
     Step 1: user goes to the webpage
     Step 2: user enters the zip code then clicks the BUTTON or presses enter (EVENT LISTENERS).
@@ -12,11 +12,11 @@ INIT - variables, functions, (declared in functional pseudo) steps, assumptions,
     Step 4: the webpage will DISPLAY the data returned from the API
     Step 5: the user will either VIEW the data or an ERROR message.
 
-    ** Assumptions: **
+    **Assumptions:**
 
     1. User already knows zip code for their area.
 
-    ** Known-knowns (requirements) **
+    **Known-knowns (requirements)**
 
     1. use API at https://openweathermap.org/ for weather data.
     2. allow the user to enter zip code and press button to load weather data
@@ -31,7 +31,7 @@ INIT - variables, functions, (declared in functional pseudo) steps, assumptions,
     5. user should be able to enter new zip code to get weather at a different location without reloading
     6. design should be responsive using bootstrap and applies atomic design principles
 
-    ** known-unknowns (stretch goals?) **
+    **known-unknowns (stretch goals?)**
 
     1. use JS to render entire app
     2. get weather data based on user loc (offer both options)
@@ -51,17 +51,17 @@ END
 
 # Functional #
 
-** Variables: **
+**Variables:**
 
 userInput = zip code; -- this needs to have requirements (ex: at least 5 numeric digits)
 weatherBtn = document.getElementById("weather-btn");
 
 
-** Event listeners: **
+**Event listeners:**
 weatherBtn.addEventListener('click', init);
 userInput.addEventListener('onChange', init);
 
-** Functions: **
+**Functions:**
 
 setState() {
         change UI based on status of user
