@@ -53,6 +53,7 @@ END
 
 *Variables:*
 
+header = document.getElementById("header");
 userInput = zip code; -- this needs to have requirements (ex: at least 5 numeric digits)
 weatherBtn = document.getElementById("weather-btn");
 
@@ -63,8 +64,10 @@ userInput.addEventListener('onChange', init);
 
 *Functions:*
 
-setState() {
+setState(returned data) {
+    -- not sure what this would do at the moment?
         change UI based on status of user
+        currentPage++;
     }
     
 fetchData() {
@@ -86,8 +89,6 @@ renderUI(){
     if statement to determine which state is current
 
 }
-
-setState(returned data){} -- not sure what this would do at the moment?
 
 checkUserInput (){
     if (userInput = null) {
@@ -116,4 +117,7 @@ init () {
 
 # Object oriented #
 
-weatherObj = {};
+let weatherObj = {
+    header: "Weather App"
+    page : [],
+};
