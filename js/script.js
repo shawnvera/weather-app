@@ -2,7 +2,7 @@
 let userInput = document.getElementById("user-input");
 const API_KEY = "73f003fe3ba211516a32407b6f8e25b6";
 const API_URL = "https://api.openweathermap.org";
-let API_PATH = `/data/2.5/weather?zip=${userInput}`;
+let API_PATH = `/data/2.5/weather`;
 const ZIP_CODES = [];
 let header = document.getElementById("header");
 
@@ -10,58 +10,45 @@ let weatherBtn = document.getElementById("weather-btn");
 let city = document.getElementById("city");
 
 // Event listeners:
-weatherBtn.addEventListener('click', init);
-// userInput.addEventListener('keyup', init);
-// window.addEventListener('load', init);
+userInput.addEventListener('input', checkUserData); // change function to updateZipCode
+weatherBtn.addEventListener('click', getWeatherData);
+window.addEventListener('load', init);
 
 // Functions:
-async function init() {
-    console.log(ZIP_CODES.push(userInput.textContent));
-    try {
-        let data = await getWeatherData(ZIP_CODES);
-        // call the getData function to retrieve the weather data
-    } catch (error) {
-        console.error(`ERROR: ${error}`);
-    }
+async function init(e) {
+    // ZIP_CODES.push(userInput.value);
+    // console.log(ZIP_CODES);
+    // try {
+    //     let data = await getWeatherData(ZIP_CODES);
+    //     // call the getData function to retrieve the weather data
+    // } catch (error) {
+    //     console.error(`ERROR: ${error}`);
+    // }
 }
 // make the api call by passing in the zip code as the parameter
 // pass in a zip code
 
-async function getWeatherData(zipcode) {
-    // assume that the zipcode is valid
-    // prepare the data and make the axios call
-    let weatherData = {};
-     ZIP_CODES.push(weatherData.zip);
-    // trap for any errors on the backend
-    // 400 error will be handled based on the return data
-    // 200 is a successful call
-    // create an object that holds the baseURL, params obj - zip api_key
-    // independent and dynamic obj.
+async function getWeatherData(e) {
     let options = {
         method: 'get',
         baseURL: API_URL,
         params: {
-            zip: zipcode,
+            zip: weatherObj.zipcode,
             appid: API_KEY,
         }
     };
-    // make the axios call and provide the options obj in the second argument (parameter)
     try {
-        weatherData = await axios
+        await axios
             .get(API_PATH, options)
             .then(function (response) {
                 return response.data;
             })
             .then(function (data) {
-                return data;
+                weatherObj.weatherData.push(data);
             })
-        console.log(weatherData);
-        throw "this is working"
     } catch (error) {
-        console.log(`ERROR: ${error}`)
+        console.log(`ERROR: ${error}`);
     }
-    return weatherData;
-    
 }
 
 
@@ -73,9 +60,9 @@ async function getWeatherData(zipcode) {
 
 
 
- function setState(weatherData) {
+function setState(weatherData) {
     city.textContent = getWeatherData.city;
-    };
+};
 
 
 
@@ -83,56 +70,59 @@ async function getWeatherData(zipcode) {
 
 
 
-    /*
+/*
 fetchData() {
-        Axios
-        send API key and user input to API
-        calls API
-        return data in global scope variable
-        error catch (bad user input, timeout, etc...)
-        showError - alert
-    }
+    Axios
+    send API key and user input to API
+    calls API
+    return data in global scope variable
+    error catch (bad user input, timeout, etc...)
+    showError - alert
+}
 
 displayTemperature() {
-    compute temperature? based on num param in required measures
-    return it or update the UI
-    }
+compute temperature? based on num param in required measures
+return it or update the UI
+}
 
 renderUI(){
-    currentPage = {};
-    if statement to determine which state is current
+currentPage = {};
+if statement to determine which state is current
 
 }
+*/
 
-checkUserInput (){
-    if (userInput = null) {
-        alert("Zip Code Must Be Entered.")
-    } Else if (userIinput.length != 5) {
-        alert("Zip Code Must Be 5 Digits.")
-    } Else if (userInput.typeOf != number) {
-        alert("Zip Code must be numeric.")
-    } Else 
-    return fetchData;
+function checkUserData(e) {
+    if (userInput.value == "") {
+        document.getElementById("error-text").textContent = "Zip Code Must Be Entered.";
+    } else if (userInput.value.length !== 5) {
+        document.getElementById("error-text").textContent = "Zip Code Must Be 5 Digits."
+    } else {
+        weatherObj.zipcode = userInput.value;
+        document.getElementById("error-text").textContent = "";
+    }
 }
 
 
-init () {
-    init function invoked on button click of weatherBtn
-    
-    
-    setState();
-    
-    fetchData();
+// init () {
+// init function invoked on button click of weatherBtn
 
-    displayTemperature();
 
-    checkUserInput();
-}
+// setState();
 
-// # Object oriented #
+// fetchData();
+
+// displayTemperature();
+
+// checkUserInput();
+// }
+
+// // # Object oriented #
 
 let weatherObj = {
-    header: "Weather App"
-    page : [],
-};
-*/
+    header: "Weather App",
+    page: [],
+    zipcode: "",
+    weatherData: [],
+    city: "",
+}
