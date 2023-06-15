@@ -5,16 +5,28 @@ const API_URL = "https://api.openweathermap.org";
 let API_PATH = `/data/2.5/weather`;
 const ZIP_CODES = [];
 let header = document.getElementById("header");
-
 let weatherBtn = document.getElementById("weather-btn");
 let city = document.getElementById("city");
 
+const weatherObj = {
+    header: "Weather App",
+    page: [],
+    zipcode: "",
+    weatherData: [],
+    city: "",
+}
+
 // Event listeners:
-userInput.addEventListener('input', checkUserData); // change function to updateZipCode
+userInput.addEventListener('input', updateZipCode); // change function to updateZipCode
 weatherBtn.addEventListener('click', getWeatherData);
 window.addEventListener('load', init);
 
 // Functions:
+function renderUI(){
+    document.getElementById("city").innerHTML = weatherObj.weatherData[0].name;
+    console.log(weatherObj);
+    }
+
 async function init(e) {
     // ZIP_CODES.push(userInput.value);
     // console.log(ZIP_CODES);
@@ -49,16 +61,8 @@ async function getWeatherData(e) {
     } catch (error) {
         console.log(`ERROR: ${error}`);
     }
+    renderUI();
 }
-
-
-
-
-
-
-
-
-
 
 function setState(weatherData) {
     city.textContent = getWeatherData.city;
@@ -66,7 +70,7 @@ function setState(weatherData) {
 
 
 
-
+console.log(weatherObj.weatherData);
 
 
 
@@ -84,15 +88,9 @@ displayTemperature() {
 compute temperature? based on num param in required measures
 return it or update the UI
 }
-
-renderUI(){
-currentPage = {};
-if statement to determine which state is current
-
-}
 */
 
-function checkUserData(e) {
+function updateZipCode(e) {
     if (userInput.value == "") {
         document.getElementById("error-text").textContent = "Zip Code Must Be Entered.";
     } else if (userInput.value.length !== 5) {
@@ -119,10 +117,3 @@ function checkUserData(e) {
 
 // // # Object oriented #
 
-let weatherObj = {
-    header: "Weather App",
-    page: [],
-    zipcode: "",
-    weatherData: [],
-    city: "",
-}
