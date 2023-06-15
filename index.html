@@ -20,10 +20,12 @@
         <![endif]-->
         
         
-        <div id="main" class="container-flex">
+        <div id="main" class="container-flex border border-dark">
             <div class="row">
                 <div class="col text-center"><h1>Weather App</h1>
+                    
                 <div class="col">
+                    <div id="error-text"></div>
                     <input type="number" label for="Zip Code" placeholder="Zip Code" class="text-center" id="user-input" autofocus>
                     <button class="btn btn-primary me-md-2" type="button" id="weather-btn">Get Weather</button>
                 </div>
@@ -31,7 +33,7 @@
             </div>
         </div>
 
-        <div class="container mt-5">
+        <div class="container mt-5 border border-dark">
             <div class="row">
                 <div class="col border border-dark bg-info text-center bg-opacity-10">
                     City
@@ -42,12 +44,12 @@
         <div class="container mb-5">
             <div class="row">
                 <div class="col border text-center">
-                    <p id="city">Lexington</p>
+                    <p id="city">Name of city:</p>
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container border border-dark">
             <div class="row">
                 <div class="col border border-dark bg-info text-center bg-opacity-10">
                     Temperature
@@ -57,19 +59,19 @@
 
         <div class="container mb-5">
             <div class="row">
-                <div class="col border text-center">
+                <div class="col border text-center" id="kelvin">
                     123 K
                 </div>
-                <div class="col border text-center">
+                <div class="col border text-center" id="fahrenheit">
                     32 F
                 </div>
-                <div class="col border text-center">
+                <div class="col border text-center" id="celcius">
                     -9 C
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container border border-dark">
             <div class="row">
                 <div class="col border border-dark bg-info text-center bg-opacity-10">
                    Condition
@@ -85,7 +87,7 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container border border-dark">
             <div class="row">
                 <div class="col border border-dark bg-info text-center bg-opacity-10">
                     Other info:
