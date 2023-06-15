@@ -1,21 +1,22 @@
 // Variables:
+let userInput = document.getElementById("user-input");
 const API_KEY = "73f003fe3ba211516a32407b6f8e25b6";
 const API_URL = "https://api.openweathermap.org";
-let API_PATH = "/data/2.5/weather";
+let API_PATH = `/data/2.5/weather?zip=${userInput}`;
 const ZIP_CODES = [];
 let header = document.getElementById("header");
-let userInput = document.getElementById("user-input");
+
 let weatherBtn = document.getElementById("weather-btn");
 let city = document.getElementById("city");
 
 // Event listeners:
 weatherBtn.addEventListener('click', init);
-userInput.addEventListener('keyup', init);
-window.addEventListener('load', init);
+// userInput.addEventListener('keyup', init);
+// window.addEventListener('load', init);
 
 // Functions:
 async function init() {
-    ZIP_CODES.push(userInput);
+    console.log(ZIP_CODES.push(userInput.textContent));
     try {
         let data = await getWeatherData(ZIP_CODES);
         // call the getData function to retrieve the weather data
