@@ -10,14 +10,14 @@ let city = document.getElementById("city");
 
 // Event listeners:
 weatherBtn.addEventListener('click', init);
-userInput.addEventListener('keyPress', init);
+userInput.addEventListener('keyup', init);
 window.addEventListener('load', init);
 
 // Functions:
 async function init() {
     ZIP_CODES.push(userInput);
     try {
-        let data = await getWeatherData(ZIP_CODES[0]);
+        let data = await getWeatherData(ZIP_CODES);
         // call the getData function to retrieve the weather data
     } catch (error) {
         console.error(`ERROR: ${error}`);
@@ -74,7 +74,14 @@ async function getWeatherData(zipcode) {
 
  function setState(weatherData) {
     city.textContent = getWeatherData.city;
-    }
+    };
+
+
+
+
+
+
+
     /*
 fetchData() {
         Axios
