@@ -7,7 +7,6 @@ const ZIP_CODES = [];
 let header = document.getElementById("header");
 let weatherBtn = document.getElementById("weather-btn");
 let city = document.getElementById("city");
-
 const weatherObj = {
     header: "Weather App",
     page: [],
@@ -15,31 +14,28 @@ const weatherObj = {
     weatherData: [],
     city: "",
 }
-
+console.log(weatherObj);
 // Event listeners:
 userInput.addEventListener('input', updateZipCode); // change function to updateZipCode
 weatherBtn.addEventListener('click', getWeatherData);
-window.addEventListener('load', init);
-
+window.addEventListener('load', renderUI);
 // Functions:
-function renderUI(){
+function renderUI() {
     document.getElementById("city").innerHTML = weatherObj.weatherData[0].name;
-    console.log(weatherObj);
-    }
-
-async function init(e) {
-    // ZIP_CODES.push(userInput.value);
-    // console.log(ZIP_CODES);
-    // try {
-    //     let data = await getWeatherData(ZIP_CODES);
-    //     // call the getData function to retrieve the weather data
-    // } catch (error) {
-    //     console.error(`ERROR: ${error}`);
-    // }
+    const kelvinTemp = document.getElementById("kelvin").innerHTML = weatherObj.weatherData[0].main.temp;
+    document.getElementById("condition").innerHTML = weatherObj.weatherData[0].weather[0].main;
+    document.getElementById("fahrenheit").innerHTML = Math.round(kelvinToFahrenheit(kelvinTemp)) + " F";
+    document.getElementById("celcius").innerHTML = Math.round(kelvinToCelcius(kelvinTemp)) + " C";
+    document.getElementById("img").innerHTML = weatherObj.weatherData[0].weather[0].icon;
 }
-// make the api call by passing in the zip code as the parameter
-// pass in a zip code
-
+function kelvinToCelcius(kelvinTemp) {
+    let celcius = parseInt(kelvinTemp) - 273.15;
+    return celcius
+}
+function kelvinToFahrenheit(kelvinTemp) {
+    let fahrenheit = (kelvinTemp - 273.15) * 9 / 5 + 32
+    return fahrenheit;
+}
 async function getWeatherData(e) {
     let options = {
         method: 'get',
@@ -59,37 +55,10 @@ async function getWeatherData(e) {
                 weatherObj.weatherData.push(data);
             })
     } catch (error) {
-        console.log(`ERROR: ${error}`);
+        document.getElementById("error").innerHTML = (`ERROR: ${error}`);
     }
     renderUI();
 }
-
-function setState(weatherData) {
-    city.textContent = getWeatherData.city;
-};
-
-
-
-console.log(weatherObj.weatherData);
-
-
-
-/*
-fetchData() {
-    Axios
-    send API key and user input to API
-    calls API
-    return data in global scope variable
-    error catch (bad user input, timeout, etc...)
-    showError - alert
-}
-
-displayTemperature() {
-compute temperature? based on num param in required measures
-return it or update the UI
-}
-*/
-
 function updateZipCode(e) {
     if (userInput.value == "") {
         document.getElementById("error-text").textContent = "Zip Code Must Be Entered.";
@@ -100,20 +69,3 @@ function updateZipCode(e) {
         document.getElementById("error-text").textContent = "";
     }
 }
-
-
-// init () {
-// init function invoked on button click of weatherBtn
-
-
-// setState();
-
-// fetchData();
-
-// displayTemperature();
-
-// checkUserInput();
-// }
-
-// // # Object oriented #
-
