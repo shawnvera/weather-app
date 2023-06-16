@@ -16,7 +16,7 @@ const weatherObj = {
 }
 console.log(weatherObj);
 // Event listeners:
-userInput.addEventListener('input', updateZipCode); // change function to updateZipCode
+userInput.addEventListener('input', updateZipCode);
 weatherBtn.addEventListener('click', getWeatherData);
 window.addEventListener('load', renderUI);
 // Functions:

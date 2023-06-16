@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body class="bg-primary-subtle">
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
-    <div id="main" class="container border border-dark">
+    <div id="main" class="container border border-dark shadow">
         <div class="row">
             <div class="col text-center">
                 <h1>Weather App</h1>
@@ -40,11 +40,11 @@
 
     <div class="container mt-5 border border-dark">
         <div class="row">
-            <div class="col-6 border border-dark bg-info text-center bg-opacity-10">
-                City
+            <div class="col-6 border border-dark bg-info-subtle shadow text-center">
+                <b>City</b>
             </div>
-            <div class="col-6 border border-dark bg-info text-center bg-opacity-10">
-                If there is an error it will display below:
+            <div class="col-6 border border-dark bg-info-subtle shadow text-center">
+                <b>Errors will show below:</b>
             </div>
         </div>
     </div>
@@ -52,18 +52,18 @@
     <div class="container mb-5">
         <div class="row">
             <div class="col-6 border text-center">
-                <p id="city">Name of city:</p>
+                <p id="city"></p>
             </div>
             <div class="col-6 border text-center">
-                <p id="error">No error</p>
+                <p id="error"></p>
             </div>
         </div>
     </div>
 
     <div class="container border border-dark">
         <div class="row">
-            <div class="col border border-dark bg-info text-center bg-opacity-10">
-                Temperature
+            <div class="col border border-dark shadow bg-info-subtle text-center">
+                <b>Temperature:</b>
             </div>
         </div>
     </div>
@@ -84,8 +84,8 @@
 
     <div class="container border border-dark">
         <div class="row">
-            <div class="col border border-dark bg-info text-center bg-opacity-10">
-                Condition
+            <div class="col border border-dark bg-info-subtle shadow text-center">
+               <b>Condition:</b>
             </div>
         </div>
     </div>
@@ -93,15 +93,15 @@
     <div class="container mb-5">
         <div class="row">
             <div class="col border text-center" id="condition">
-                Light rain
+                
             </div>
         </div>
     </div>
 
     <div class="container border border-dark">
         <div class="row">
-            <div class="col border border-dark bg-info text-center bg-opacity-10">
-                Other info:
+            <div class="col border border-dark bg-info-subtle shadow text-center">
+                <b>Other info:</b>
             </div>
         </div>
     </div>
