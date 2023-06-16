@@ -23,11 +23,11 @@ window.addEventListener('load', renderUI);
 function renderUI() {
     document.getElementById("city").innerHTML = weatherObj.weatherData[0].name;
     const kelvinTemp = Math.round(weatherObj.weatherData[0].main.temp);
-    document.getElementById("kelvin").innerHTML = kelvinTemp + " Kelvin"; 
+    document.getElementById("kelvin").innerHTML = kelvinTemp + " Kelvin";
     document.getElementById("condition").innerHTML = weatherObj.weatherData[0].weather[0].main;
     document.getElementById("fahrenheit").innerHTML = Math.round(kelvinToFahrenheit(kelvinTemp)) + " Fahrenheit";
     document.getElementById("celcius").innerHTML = Math.round(kelvinToCelcius(kelvinTemp)) + " Celcius";
-    document.getElementById("img").innerHTML = weatherObj.weatherData[0].weather[0].icon; 
+    document.getElementById("img").innerHTML = weatherObj.weatherData[0].weather[0].icon;
 }
 function kelvinToCelcius(kelvinTemp) {
     let celcius = parseInt(kelvinTemp) - 273.15;

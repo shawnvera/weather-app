@@ -1,4 +1,4 @@
-# Procedural #
+# Procedural
 
 START
 
@@ -49,75 +49,73 @@ DISPLAY - weather data
 
 END
 
-# Functional #
+# Functional
 
-*Variables:*
+_Variables:_
 
 header = document.getElementById("header");
 userInput = zip code; -- this needs to have requirements (ex: at least 5 numeric digits)
 weatherBtn = document.getElementById("weather-btn");
 
-
-*Event listeners:*
+_Event listeners:_
 weatherBtn.addEventListener('click', init);
 userInput.addEventListener('onChange', init);
 
-*Functions:*
+_Functions:_
 
 setState(returned data) {
-    -- not sure what this would do at the moment?
-        change UI based on status of user
-        currentPage++;
-    }
-    
+-- not sure what this would do at the moment?
+change UI based on status of user
+currentPage++;
+}
+
 fetchData() {
-        Axios
-        send API key and user input to API
-        calls API
-        return data in global scope variable
-        error catch (bad user input, timeout, etc...)
-        showError - alert
-    }
+Axios
+send API key and user input to API
+calls API
+return data in global scope variable
+error catch (bad user input, timeout, etc...)
+showError - alert
+}
 
 displayTemperature() {
-    compute temperature? based on num param in required measures
-    return it or update the UI
-    }
+compute temperature? based on num param in required measures
+return it or update the UI
+}
 
 renderUI(){
-    currentPage = {};
-    if statement to determine which state is current
+currentPage = {};
+if statement to determine which state is current
 
 }
 
 checkUserInput (){
-    if (userInput = null) {
-        alert("Zip Code Must Be Entered.")
-    } Else if (userIinput.length != 5) {
-        alert("Zip Code Must Be 5 Digits.")
-    } Else if (userInput.typeOf != number) {
-        alert("Zip Code must be numeric.")
-    } Else 
-    return fetchData;
+if (userInput = null) {
+alert("Zip Code Must Be Entered.")
+} Else if (userIinput.length != 5) {
+alert("Zip Code Must Be 5 Digits.")
+} Else if (userInput.typeOf != number) {
+alert("Zip Code must be numeric.")
+} Else
+return fetchData;
 }
 
-
 init () {
-    init function invoked on button click of weatherBtn
-    
-    
+init function invoked on button click of weatherBtn
+
     setState();
-    
+
     fetchData();
 
     displayTemperature();
 
     checkUserInput();
+
 }
 
-# Object oriented #
+# Object oriented
 
 let weatherObj = {
-    header: "Weather App"
-    page : [],
+header: "Weather App"
+page : [],
 };
